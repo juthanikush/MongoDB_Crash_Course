@@ -1,0 +1,40 @@
+*Show All Database*
+->show dbs
+*Create New Database*
+->use Database Name
+*See the current Database Name*
+->db
+*switched to another database*
+->use database name
+*Delete the database*
+->db.dropDatabase()
+*How to Create collection and insert one recored*
+->db.collection/table_name.insertOne({"name":"ABC","Age":27})
+*create collection with validashion rules*
+->db.createCollection("teacher",{validator:{$jsonSchema:{bsonType:"object",required:["name","age"],properties:{name:{bsonType:"string", description:"Must be a String and is required"},age:{bsonType:"int", description:"Must be an Integer and is required"},}}}})
+*show to all collections which was created by user*
+->show collections
+*see the collection rules*
+->db.getCollectionInfos({name:"teacher/collection_name"})
+*delete the collections / table *
+->db.student/collection_name.drop()
+*view the data*
+->db.teacher/collection_name.find()
+*insert the data into collections*
+->db.teacher/collection_name.insertOne({"name":"ABC","age":20})
+*insert record many recored*
+->db.teacher/collection_name.insertMany([{"name":"DEC","age":25},{"name":"XYZ","age":35},{"name":"QRT","age":25}])
+*find the only one recored*
+->db.teacher.findOne()->it will give the first recored
+*finde record in limit*
+->db.teacher.find().limit(2)
+*finde the record throw it's name*
+->db.teacher.find({"name":"DEC"})
+*update the single recored*
+->db.teacher.updateOne({name:'DEC'},{$set:{name:'jack',age:51}})
+*update many records*
+->db.teacher.updateMany({age:25},{$set:{name:'ABC'}})
+*delete single Records*
+->db.teacher.deleteOne({age:35})
+*delete mulitipale recoreds*
+->db.teacher.deleteMany({name:'ABC'})
